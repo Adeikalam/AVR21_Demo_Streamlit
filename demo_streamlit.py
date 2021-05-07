@@ -28,7 +28,10 @@ df['Age'] = df['Age'].fillna(df['Age'].mode()[0])
 
 df = pd.get_dummies(df)
 
-page = st.sidebar.radio("", options = ['Présentation', 'Dataviz', 'Modélisation'])
+page = st.sidebar.radio("", options = ['Présentation',
+                                       'Dataviz',
+                                       'Modélisation',
+                                       'Conclusion'])
 
 if page == 'Présentation':
     st.title("Projet Titanic")
@@ -39,7 +42,7 @@ if page == 'Présentation':
 
     st.markdown("""
                 Dans cette application Streamlit nous allons test plusieurs
-                modèles de machine learning sur le dataset du **Titanic**.
+                modèles de machine learning sur le dataset du [**Titanic**](https://www.kaggle.com/c/titanic/data?select=train.csv).
                 """)
 
 if page == 'Dataviz':
