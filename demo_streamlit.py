@@ -36,9 +36,39 @@ st.write(df)
 X = df.drop('Survived', axis = 1)
 y = df['Survived']
 
-X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state = 1)
 
 
+def test_model(model):
+    model.fit(X_train, y_train)
+    
+    return model.score(X_test, y_test)
+
+
+logreg = LogisticRegression()
+dtree = DecisionTreeClassifier(random_state = 1)
+knn = KNeighborsClassifier()
+
+options = ['Regression Logistique',
+           'Decision Tree',
+           'KNN']
+
+choix_modele = st.radio("Choisissez un modèle", options = options)
+
+if choix_modele == options[0]:
+    score = test_model(logreg)
+    st.write(score)
+    
+    
+if choix_modele == options[1]:
+    score = test_model(dtree)
+    st.write(score)
+    
+if choix_modele == options[2]:
+    score = test_model(knn)
+    st.write(score)
+    
+    
 
 
 
